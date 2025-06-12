@@ -1,0 +1,41 @@
+.examengrilla 
+{
+display: grid;
+grid-template-columns: 12% 12% 12% 12% 12% 12% 12% 12%;
+}
+h1
+{
+    color: aliceblue;
+    font-size: 250%;font-family: fantasy;
+    text-align: center;
+}
+header
+{
+    background-color: rgb(188, 8, 8);
+}
+footer
+{
+    background-color: rgb(219, 59, 59);
+    text-align: center;
+}
+p.pie
+{
+    color: rgb(172, 172, 29);
+}
+div.oscuro:hover
+{
+    background-color: rgb(127, 13, 13);
+    text-align: left;
+    border: 7px solid rgb(183, 226, 43);
+    border-radius: 15px;
+}
+div.claro:hover
+{
+    background-color: rgb(225, 106, 106);
+    text-align: center;
+}
+h2:hover
+{
+    font-family: cursive;
+    color: rgb(71, 42, 165);
+}
