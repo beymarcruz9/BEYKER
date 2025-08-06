@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para BERTHA - Mi Confesión de Amor</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="main-title">Para Ti, BERTHA</h1>
+            <div class="hearts">
+                <span class="heart">⭐</span>
+                <span class="heart">🌟</span>
+                <span class="heart">✨</span>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <section class="confession-section">
+                <div class="confession-card">
+                    <h2 class="confession-title">Mi Confesión para BERTHA</h2>
+                    <div class="confession-text">
+                        <p class="main-message">
+                            Querida BERTHA, desde el momento en que llegaste a mi vida, 
+                            todo cambió de la manera más hermosa. Tu nombre resuena en mi 
+                            corazón como la melodía más dulce, y cada día descubro algo 
+                            nuevo que me enamora aún más de ti.
+                        </p>
+                        <p class="love-message">
+                            <strong>BERTHA, te amo</strong> con toda mi alma. Amo tu 
+                            inteligencia, tu sonrisa que ilumina mis días más oscuros, 
+                            tu forma única de ver el mundo y esa bondad infinita que 
+                            irradias a donde quiera que vayas.
+                        </p>
+                        <p class="promise-message">
+                            BERTHA, quiero ser tu compañero en esta hermosa aventura 
+                            llamada vida. Quiero crear contigo los recuerdos más 
+                            maravillosos y amarte cada día con más intensidad que el anterior.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="quote-section">
+                <div class="quote-card">
+                    <blockquote class="romantic-quote">
+                        "BERTHA, en tus ojos encontré mi hogar, en tu sonrisa mi felicidad, 
+                        y en tu corazón el lugar donde quiero estar por siempre."
+                    </blockquote>
+                </div>
+            </section>
+
+            <section class="response-section">
+                <div class="response-card">
+                    <h3 class="response-title">BERTHA, ¿quieres ser mi compañera de vida?</h3>
+                    <div class="buttons">
+                        <button class="btn btn-yes" onclick="showResponse('yes')">¡Sí, mi amor!</button>
+                        <button class="btn btn-maybe" onclick="showResponse('maybe')">Necesito pensarlo</button>
+                    </div>
+                    <div id="response-message" class="response-message hidden"></div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p class="footer-text">Con todo mi amor para ti, BERTHA ❤️</p>
+            <div class="floating-hearts">
+                <span class="floating-heart">🌌</span>
+                <span class="floating-heart">⭐</span>
+                <span class="floating-heart">🪐</span>
+                <span class="floating-heart">🌟</span>
+                <span class="floating-heart">☄️</span>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function showResponse(type) {
+            const responseMessage = document.getElementById('response-message');
+            responseMessage.classList.remove('hidden');
+            
+            if (type === 'yes') {
+                responseMessage.innerHTML = '<p class="happy-response">¡BERTHA, eres la persona más maravillosa del mundo! Te amo infinitamente 💕✨</p>';
+                responseMessage.className = 'response-message show happy';
+                createCelebration();
+            } else {
+                responseMessage.innerHTML = '<p class="patient-response">BERTHA, esperaré el tiempo que sea necesario, porque tú vales toda la espera del mundo 💖</p>';
+                responseMessage.className = 'response-message show patient';
+            }
+        }
+
+        function createCelebration() {
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    const cosmicElements = ['⭐', '🌟', '✨', '💫', '🌌', '☄️', '🪐', '🌙'];
+                    heart.innerHTML = cosmicElements[Math.floor(Math.random() * cosmicElements.length)];
+                    heart.className = 'celebration-heart';
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    heart.style.animationDelay = Math.random() * 2 + 's';
+                    document.body.appendChild(heart);
+                    
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 4000);
+                }, i * 100);
+            }
+        }
+
+        // Animación de corazones flotantes
+        setInterval(() => {
+            const hearts = document.querySelectorAll('.floating-heart');
+            hearts.forEach(heart => {
+                heart.style.transform = `translateY(${Math.sin(Date.now() * 0.001) * 10}px)`;
+            });
+        }, 50);
+    </script>
+</body>
+</html>

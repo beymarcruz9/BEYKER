@@ -1,0 +1,704 @@
+/* Reset y configuración base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 25%, #2d1b69 50%, #4a148c 75%, #6a1b9a 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Fondo animado con estrellas y elementos cósmicos */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, #fff, transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+        radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(2px 2px at 160px 30px, #fff, transparent),
+        radial-gradient(1px 1px at 200px 90px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(2px 2px at 240px 50px, #fff, transparent),
+        radial-gradient(1px 1px at 280px 10px, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1px 1px at 320px 70px, #fff, transparent),
+        radial-gradient(2px 2px at 360px 40px, rgba(255,255,255,0.9), transparent);
+    background-repeat: repeat;
+    background-size: 400px 200px;
+    z-index: -1;
+    animation: starfield 50s linear infinite;
+}
+
+/* Planetas, cometas y galaxias flotantes */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        /* Galaxias espirales */
+        radial-gradient(ellipse 200px 100px at 15% 25%, rgba(138, 43, 226, 0.4) 0%, rgba(75, 0, 130, 0.2) 30%, transparent 70%),
+        radial-gradient(ellipse 150px 80px at 85% 75%, rgba(106, 90, 205, 0.3) 0%, rgba(72, 61, 139, 0.15) 40%, transparent 80%),
+        radial-gradient(ellipse 180px 90px at 60% 40%, rgba(147, 112, 219, 0.35) 0%, rgba(138, 43, 226, 0.1) 35%, transparent 75%),
+        /* Planetas */
+        radial-gradient(circle at 10% 20%, rgba(138, 43, 226, 0.3) 0%, transparent 30%),
+        radial-gradient(circle at 80% 80%, rgba(75, 0, 130, 0.2) 0%, transparent 25%),
+        radial-gradient(circle at 40% 60%, rgba(72, 61, 139, 0.25) 0%, transparent 20%),
+        /* Nebulosas */
+        radial-gradient(ellipse 300px 150px at 30% 70%, rgba(186, 85, 211, 0.15) 0%, rgba(138, 43, 226, 0.05) 50%, transparent 100%),
+        radial-gradient(ellipse 250px 120px at 70% 30%, rgba(123, 104, 238, 0.2) 0%, rgba(75, 0, 130, 0.08) 45%, transparent 90%);
+    z-index: -1;
+    animation: galaxies 80s ease-in-out infinite;
+}
+
+/* Capa adicional para galaxias más dinámicas */
+.container::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        /* Galaxias rotatorias */
+        conic-gradient(from 0deg at 20% 30%, transparent 0deg, rgba(138, 43, 226, 0.1) 45deg, rgba(75, 0, 130, 0.2) 90deg, rgba(106, 90, 205, 0.15) 135deg, transparent 180deg, rgba(147, 112, 219, 0.1) 225deg, rgba(138, 43, 226, 0.2) 270deg, rgba(75, 0, 130, 0.1) 315deg, transparent 360deg),
+        conic-gradient(from 180deg at 80% 70%, transparent 0deg, rgba(106, 90, 205, 0.15) 60deg, rgba(138, 43, 226, 0.25) 120deg, rgba(75, 0, 130, 0.1) 180deg, transparent 240deg, rgba(147, 112, 219, 0.2) 300deg, transparent 360deg);
+    z-index: -1;
+    animation: spiral-galaxies 120s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes starfield {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-200px); }
+}
+
+@keyframes galaxies {
+    0%, 100% { 
+        transform: translateY(0px) rotate(0deg) scale(1); 
+        opacity: 0.8;
+    }
+    33% { 
+        transform: translateY(-20px) rotate(1deg) scale(1.05); 
+        opacity: 1;
+    }
+    66% { 
+        transform: translateY(-10px) rotate(-0.5deg) scale(0.95); 
+        opacity: 0.9;
+    }
+}
+
+@keyframes spiral-galaxies {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+    animation: fadeInDown 1s ease-out;
+}
+
+.main-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #d63384;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    animation: heartbeat 2s ease-in-out infinite;
+}
+
+.hearts {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.heart {
+    font-size: 2rem;
+    animation: bounce 2s infinite;
+    animation-delay: var(--delay, 0s);
+}
+
+.heart:nth-child(1) { --delay: 0s; }
+.heart:nth-child(2) { --delay: 0.3s; }
+.heart:nth-child(3) { --delay: 0.6s; }
+
+/* Secciones principales */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Tarjeta de confesión */
+.confession-section {
+    animation: fadeInUp 1s ease-out 0.5s both;
+}
+
+.confession-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 15px 35px rgba(138, 43, 226, 0.3);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(138, 43, 226, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.confession-card::before {
+    content: '🌟';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 4rem;
+    opacity: 0.2;
+    animation: twinkle 3s ease-in-out infinite;
+}
+
+.confession-card::after {
+    content: '🌌';
+    position: absolute;
+    bottom: -5px;
+    left: -5px;
+    font-size: 2.5rem;
+    opacity: 0.4;
+    animation: galaxy-spin 8s ease-in-out infinite;
+}
+
+/* Agregar galaxia adicional a la tarjeta de confesión */
+.confession-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 15px 35px rgba(138, 43, 226, 0.3);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(138, 43, 226, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.confession-card {
+    background: 
+        radial-gradient(ellipse 100px 50px at 90% 10%, rgba(138, 43, 226, 0.1) 0%, transparent 70%),
+        rgba(255, 255, 255, 0.95);
+}
+
+.confession-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5rem;
+    color: #d63384;
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.confession-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, #8a2be2, #4b0082);
+    border-radius: 2px;
+    box-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+}
+
+.confession-text {
+    line-height: 1.8;
+    color: #495057;
+}
+
+.confession-text p {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    text-align: justify;
+    animation: fadeIn 1s ease-out;
+}
+
+.main-message {
+    font-style: italic;
+    color: #6c757d;
+}
+
+.love-message {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #8a2be2;
+    font-weight: 500;
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(75, 0, 130, 0.1));
+    border-radius: 15px;
+    border-left: 4px solid #8a2be2;
+    box-shadow: 0 0 20px rgba(138, 43, 226, 0.2);
+    position: relative;
+}
+
+.love-message::before {
+    content: '🌌';
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.8rem;
+    opacity: 0.7;
+    animation: galaxy-pulse 5s ease-in-out infinite;
+}
+
+.love-message::after {
+    content: '✨';
+    position: absolute;
+    bottom: 10px;
+    left: 15px;
+    font-size: 1.2rem;
+    opacity: 0.5;
+    animation: twinkle 3s ease-in-out infinite;
+}
+
+.promise-message {
+    color: #495057;
+    font-weight: 400;
+}
+
+/* Sección de cita */
+.quote-section {
+    animation: fadeInUp 1s ease-out 1s both;
+}
+
+.quote-card {
+    background: linear-gradient(135deg, #8a2be2, #4b0082);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(138, 43, 226, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.quote-card::before {
+    content: '🌌';
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    font-size: 3rem;
+    opacity: 0.3;
+    animation: rotate 20s linear infinite;
+}
+
+.quote-card::after {
+    content: '⭐';
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    font-size: 2rem;
+    opacity: 0.4;
+    animation: twinkle 2.5s ease-in-out infinite;
+}
+
+.romantic-quote {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.8rem;
+    color: white;
+    font-weight: 600;
+    line-height: 1.6;
+    position: relative;
+    z-index: 1;
+}
+
+/* Sección de respuesta */
+.response-section {
+    animation: fadeInUp 1s ease-out 1.5s both;
+}
+
+.response-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(138, 43, 226, 0.2);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(138, 43, 226, 0.2);
+    position: relative;
+}
+
+.response-card::before {
+    content: '🌌';
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2.8rem;
+    opacity: 0.5;
+    animation: galaxy-rotation 20s linear infinite;
+}
+
+.response-card::after {
+    content: '🪐';
+    position: absolute;
+    bottom: 15px;
+    left: 20px;
+    font-size: 2rem;
+    opacity: 0.4;
+    animation: orbit 15s linear infinite;
+}
+
+.response-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+    color: #d63384;
+    margin-bottom: 30px;
+}
+
+.buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.btn {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.5s ease;
+}
+
+.btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn-yes {
+    background: linear-gradient(135deg, #8a2be2, #4b0082);
+    color: white;
+    box-shadow: 0 8px 25px rgba(138, 43, 226, 0.4);
+    position: relative;
+}
+
+.btn-yes::after {
+    content: '💫';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    opacity: 0.8;
+}
+
+.btn-yes:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(138, 43, 226, 0.6);
+}
+
+.btn-maybe {
+    background: linear-gradient(135deg, #6a5acd, #9370db);
+    color: white;
+    box-shadow: 0 8px 25px rgba(106, 90, 205, 0.4);
+    position: relative;
+}
+
+.btn-maybe::after {
+    content: '🌠';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    opacity: 0.8;
+}
+
+.btn-maybe:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(106, 90, 205, 0.6);
+}
+
+/* Mensajes de respuesta */
+.response-message {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 15px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+.response-message.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.response-message.happy {
+    background: linear-gradient(135deg, rgba(138, 43, 226, 0.15), rgba(75, 0, 130, 0.15));
+    color: #8a2be2;
+    border: 2px solid rgba(138, 43, 226, 0.4);
+    box-shadow: 0 0 20px rgba(138, 43, 226, 0.3);
+    position: relative;
+}
+
+.response-message.happy::before {
+    content: '🌟✨';
+    position: absolute;
+    top: -5px;
+    right: 10px;
+    font-size: 1.5rem;
+    animation: celebration-sparkle 1s ease-in-out infinite;
+}
+
+.response-message.patient {
+    background: linear-gradient(135deg, rgba(106, 90, 205, 0.15), rgba(147, 112, 219, 0.15));
+    color: #6a5acd;
+    border: 2px solid rgba(106, 90, 205, 0.4);
+    box-shadow: 0 0 15px rgba(106, 90, 205, 0.2);
+}
+
+.hidden {
+    display: none;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    margin-top: 50px;
+    animation: fadeIn 2s ease-out 2s both;
+}
+
+.footer-text {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.5rem;
+    color: #d63384;
+    margin-bottom: 20px;
+}
+
+.floating-hearts {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.floating-heart {
+    font-size: 1.5rem;
+    animation: float 3s ease-in-out infinite;
+    animation-delay: var(--float-delay, 0s);
+}
+
+.floating-heart:nth-child(1) { --float-delay: 0s; }
+.floating-heart:nth-child(2) { --float-delay: 0.6s; }
+.floating-heart:nth-child(3) { --float-delay: 1.2s; }
+.floating-heart:nth-child(4) { --float-delay: 1.8s; }
+.floating-heart:nth-child(5) { --float-delay: 2.4s; }
+
+/* Corazones de celebración */
+.celebration-heart {
+    position: fixed;
+    font-size: 2rem;
+    pointer-events: none;
+    animation: celebration 4s ease-out forwards;
+    z-index: 1000;
+}
+
+/* Animaciones */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.2; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes orbit {
+    0% { transform: rotate(0deg) translateX(20px) rotate(0deg); }
+    100% { transform: rotate(360deg) translateX(20px) rotate(-360deg); }
+}
+
+@keyframes celebration-sparkle {
+    0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.8; }
+    50% { transform: scale(1.3) rotate(180deg); opacity: 1; }
+}
+
+@keyframes galaxy-spin {
+    0%, 100% { transform: rotate(0deg) scale(1); opacity: 0.4; }
+    50% { transform: rotate(180deg) scale(1.1); opacity: 0.6; }
+}
+
+@keyframes galaxy-pulse {
+    0%, 100% { transform: scale(1); opacity: 0.7; }
+    50% { transform: scale(1.2); opacity: 1; }
+}
+
+@keyframes galaxy-rotation {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes celebration {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .main-title {
+        font-size: 2.5rem;
+    }
+    
+    .confession-card,
+    .quote-card,
+    .response-card {
+        padding: 25px;
+    }
+    
+    .confession-title {
+        font-size: 2rem;
+    }
+    
+    .romantic-quote {
+        font-size: 1.4rem;
+    }
+    
+    .buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: 250px;
+    }
+    
+    .hearts {
+        gap: 15px;
+    }
+    
+    .heart {
+        font-size: 1.5rem;
+    }
+    
+    .floating-hearts {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-title {
+        font-size: 2rem;
+    }
+    
+    .confession-card,
+    .quote-card,
+    .response-card {
+        padding: 20px;
+    }
+    
+    .confession-text p {
+        font-size: 1rem;
+    }
+    
+    .romantic-quote {
+        font-size: 1.2rem;
+    }
+    
+    .response-title {
+        font-size: 1.5rem;
+    }
+}
